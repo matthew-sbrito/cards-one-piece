@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CardItem} from "../card-tile/card-tile.component";
+import {CardItem, PERSONS} from "./persons.model";
 
 @Component({
   selector: 'app-cards-screen',
@@ -8,12 +8,11 @@ import {CardItem} from "../card-tile/card-tile.component";
 })
 export class CardsScreenComponent implements OnInit {
 
-  cards: CardItem[] = CARDS
+  cards: CardItem[] = PERSONS
 
   constructor() { }
 
   ngOnInit(): void {
-    this.cards[0].active = true;
   }
 
   handleClick(card: CardItem) {
@@ -26,25 +25,12 @@ export class CardsScreenComponent implements OnInit {
     return `/assets/${card.imageUrl}`
   }
 
+  icon(card: CardItem) {
+    return `/assets/${card.iconUrl}`
+  }
 
   styleBackground(card: CardItem) {
-    return `--optionBackground:url('${this.image(card)}'); --defaultBackground: ${card.defaultBackground};`;
+    return `--imageBackground:url('${this.image(card)}'); --defaultColor: ${card.defaultBackground};`;
   }
-}
 
-const CARDS: CardItem[] = [
-  {
-    title: "Luffy",
-    subtitle: "Do chapeu de palha!",
-    imageUrl: "luffy.webp",
-    defaultBackground: "#ed5565",
-    active: false
-  },
-  {
-    title: "Zoro",
-    subtitle: "O Rei do inferno!",
-    imageUrl: "luffy.webp",
-    defaultBackground: "#2ecc71",
-    active: false
-  },
-]
+}

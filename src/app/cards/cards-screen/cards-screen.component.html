@@ -1,23 +1,20 @@
-<section class="options">
-  <app-card-tile *ngFor="let card of cards"
-                 [card]="card"
-                 (clickEmitter)="handleClick($event)"
-  ></app-card-tile>
-<!--  <article class="option" *ngFor="let card of cards"-->
-<!--           [class.active]="card.active"-->
-<!--           (click)="handleClick(card)"-->
-<!--           [style]="styleBackground(card)"-->
-<!--  >-->
-<!--    <div class="shadow"></div>-->
-<!--    <div class="label">-->
-<!--      <section class="icon">-->
-<!--        <img [src]="image(card)" [alt]="card.title" />-->
-<!--      </section>-->
-<!--      <section class="info">-->
-<!--        <div class="main">{{ card.title }}</div>-->
-<!--        <div class="sub">{{ card.subtitle }}</div>-->
-<!--      </section>-->
-<!--    </div>-->
-<!--  </article>-->
+<section class="cards">
+
+    <article class="card" *ngFor="let card of cards"
+             [class.active]="card.active"
+             (click)="handleClick(card)"
+             [style]="styleBackground(card)"
+    >
+      <div class="shadow"></div>
+      <div class="label">
+        <section class="icon">
+          <img [src]="icon(card)" [alt]="card.title" />
+        </section>
+        <section class="info">
+          <div class="main">{{ card.title }}</div>
+          <div class="sub">{{ card.subtitle }}</div>
+        </section>
+      </div>
+    </article>
 
 </section>
